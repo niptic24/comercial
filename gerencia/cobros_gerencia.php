@@ -60,9 +60,6 @@ $mes=date("n");
 //años
 $año=date("Y");
 
-
-
-
 $stmt1 = $conn->prepare('SELECT SUM(cobro) as totalm FROM cobros_gen where asesor =? and mes=? and ano=?');
 $stmt1->execute([$_SESSION['asesor'],$mes,$año]);
 $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
@@ -309,9 +306,55 @@ if ($venta_global_cobrog < $porcentajeg3 ) {
                <!-- <canvas id="speedChart" width="400" height="100"></canvas>-->
         
                El rango de cumplimiento es: <br>
-                              
+                                
+                                <!--Global-->  
+                                <?php if( $parametro == 'asesor='.$asesor_semaforo.'&?g=g' and $porcentajeventabarrag >= 95){ 
+                      
+                      ?>
+                    <div class="progress">
+                     <div class= "progress-bar progress-bar-striped bg-success progress-bar-animated " role="progressbar" 
+                      style="width: <?php echo $porcentajeventabarrag ?>%;" aria-valuenow=" <?php echo $porcentajeventabarrag ?>" 
+                      aria-valuemin="0" 
+                      aria-valuemax="100"> <?php echo $porcentajeventabarrag."%" ?></div>
+                     </div>
+                     <?php 
+                 echo "<hr />";
+                 echo $textog;
+                 ?>
+                     
+                     <?php 
+                      }
+                        
+                      elseif ( $parametro == 'asesor='.$asesor_semaforo.'&?g=g' and $porcentajeventabarrag >70 & $porcentajeventabarrag<95) {
+                          ?>     
+                          <div class="progress">
+                     <div class= "progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" 
+                      style="width: <?php echo $porcentajeventabarrag ?>%;" aria-valuenow=" <?php echo $porcentajeventabarrag ?>" 
+                      aria-valuemin="0" 
+                      aria-valuemax="100"> <?php echo $porcentajeventabarrag."%" ?></div>
+                     </div>   
+                     <?php 
+                 echo "<hr />";
+                 echo $textog;
+                 ?>
+                                
+                       <?php  }elseif($parametro == 'asesor='.$asesor_semaforo.'&?g=g' and $porcentajeventabarrag<=70){
+                           ?>
+                          <div class="progress">
+                     <div class= "progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" 
+                      style="width: <?php echo $porcentajeventabarrag ?>%;" aria-valuenow=" <?php echo $porcentajeventabarrag ?>" 
+                      aria-valuemin="0" 
+                      aria-valuemax="100"> <?php echo $porcentajeventabarrag."%" ?></div>
+                     </div> 
+                     <?php 
+                 echo "<hr />";
+                 echo $textog;
+                 ?>   
+                        <?php }
+                         ?>
+               
                  <!--Menaual-->              
-                 <?php if(  $porcentajeventabarra >= 95){ 
+                 <?php if( $parametro == 'asesor='.$asesor_semaforo.'&?m=m' and $porcentajeventabarra >= 95){ 
                       
                       ?>
                     <div class="progress">
@@ -328,7 +371,7 @@ if ($venta_global_cobrog < $porcentajeg3 ) {
                      <?php 
                       }
                         
-                      elseif (  $porcentajeventabarra >70 & $porcentajeventabarra<95) {
+                      elseif ( $parametro == 'asesor='.$asesor_semaforo.'&?m=m' and $porcentajeventabarra >70 & $porcentajeventabarra<95) {
                           ?>     
                           <div class="progress">
                      <div class= "progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" 
@@ -342,7 +385,7 @@ if ($venta_global_cobrog < $porcentajeg3 ) {
                  
                  ?> 
                                 
-                       <?php  }elseif( $porcentajeventabarra<=70){
+                       <?php  }elseif($parametro == 'asesor='.$asesor_semaforo.'&?m=m' and $porcentajeventabarra<=70){
                            ?>
                           <div class="progress">
                      <div class= "progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" 

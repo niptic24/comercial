@@ -7,19 +7,19 @@ $porcentajeventabarra = 0;
 $texto_historico_cob_c="";
 $grafica= "";
 $mesh =0;
-    if(isset($_POST['submit']))
-    
-    {
-        $mesh = $_POST['mes'];
-        $ano = $_POST['ano'];
-        $grafica = $_POST['grafica'];
-    
+if(isset($_POST['submit']))
+ 
+{
+    $mesh = $_POST['mes'];
+    $ano = $_POST['ano'];
+    $grafica = $_POST['grafica'];
+  
 
-    //Obtener ASESOR
+    //Obtener valor venta global
 $stmt = $conn->prepare("SELECT SUM(`cobro`)  as totalg FROM cobros_gen WHERE `asesor`= ?");
 $stmt->execute([$_SESSION['nombre_usuario']]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-$cobro_global_historicoc = $row['ASESOR'];
+$cobro_global_historicoc = $row['totalg'];
 
 //Obtener valor presupuesto global
 

@@ -682,9 +682,54 @@ if ($total_ventas_linea < $porcentajeg3 ) {
 
                                     El rango de cumplimiento es: <br>
                                 
-                           
+                                <!--Global-->  
+                                <?php if( $parametro == 'asesor='.$asesor_semaforo.'&?g=g' and $porcentajeventabarrag >= 95){ 
+                      
+                      ?>
+                    <div class="progress">
+                     <div class= "progress-bar progress-bar-striped bg-success progress-bar-animated " role="progressbar" 
+                      style="width: <?php echo $porcentajeventabarrag ?>%;" aria-valuenow=" <?php echo $porcentajeventabarrag ?>" 
+                      aria-valuemin="0" 
+                      aria-valuemax="100"> <?php echo $porcentajeventabarrag."%" ?></div>
+                     </div>
+                     <?php 
+                 echo "<hr />";
+                 echo $textog;
+                 ?>
+                     
+                     <?php 
+                      }
+                        
+                      elseif ( $parametro == 'asesor='.$asesor_semaforo.'&?g=g' and $porcentajeventabarrag >70 & $porcentajeventabarrag<95) {
+                          ?>     
+                          <div class="progress">
+                     <div class= "progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" 
+                      style="width: <?php echo $porcentajeventabarrag ?>%;" aria-valuenow=" <?php echo $porcentajeventabarrag ?>" 
+                      aria-valuemin="0" 
+                      aria-valuemax="100"> <?php echo $porcentajeventabarrag."%" ?></div>
+                     </div>   
+                     <?php 
+                 echo "<hr />";
+                 echo $textog;
+                 ?>
+                                
+                       <?php  }elseif($parametro == 'asesor='.$asesor_semaforo.'&?g=g' and $porcentajeventabarrag<=70){
+                           ?>
+                          <div class="progress">
+                     <div class= "progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" 
+                      style="width: <?php echo $porcentajeventabarrag ?>%;" aria-valuenow=" <?php echo $porcentajeventabarrag ?>" 
+                      aria-valuemin="0" 
+                      aria-valuemax="100"> <?php echo $porcentajeventabarrag."%" ?></div>
+                     </div> 
+                     <?php 
+                 echo "<hr />";
+                 echo $textog;
+                 ?>   
+                        <?php }
+                         ?>
+               
                  <!--Menaual-->              
-                 <?php if( $porcentajeventabarra >= 95){ 
+                 <?php if( $parametro == 'asesor='.$asesor_semaforo.'&?m=m' and $porcentajeventabarra >= 95){ 
                       
                       ?>
                     <div class="progress">
@@ -701,7 +746,7 @@ if ($total_ventas_linea < $porcentajeg3 ) {
                      <?php 
                       }
                         
-                      elseif ( $porcentajeventabarra >70 & $porcentajeventabarra<95) {
+                      elseif ( $parametro == 'asesor='.$asesor_semaforo.'&?m=m' and $porcentajeventabarra >70 & $porcentajeventabarra<95) {
                           ?>     
                           <div class="progress">
                      <div class= "progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" 
@@ -715,7 +760,7 @@ if ($total_ventas_linea < $porcentajeg3 ) {
                  
                  ?> 
                                 
-                       <?php  }elseif( $porcentajeventabarra<=70){
+                       <?php  }elseif($parametro == 'asesor='.$asesor_semaforo.'&?m=m' and $porcentajeventabarra<=70){
                            ?>
                           <div class="progress">
                      <div class= "progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" 
@@ -739,17 +784,12 @@ if ($total_ventas_linea < $porcentajeg3 ) {
                                     <i class='fa fa-circle' style='color: green'></i> Superado
 
                                 </div>
-                                       
                             </div>
-                            
                         </div>
-                        
-
 
                         <!-- Pie Chart -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
-                                
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -885,10 +925,13 @@ var myPieChart = new Chart(ctx, {
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                
-                                            
+
+
+                     
+
+
+                       
                     <!-- Footer -->
 
                     <div class="container my-auto">
