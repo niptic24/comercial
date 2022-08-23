@@ -268,7 +268,7 @@ foreach($linea as $lineaa):
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total de ventas ENE - <?php echo date('M'), ' del ' , date("Y") ?></div>
+                                                Total de cobros ENE - <?php echo date('M'), ' del ' , date("Y") ?></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php if( isset($_POST['submit']) ){	echo "$".$cobro_global_historicoc ;}
                                                 else echo "$0"?>

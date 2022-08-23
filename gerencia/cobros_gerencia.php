@@ -198,7 +198,7 @@ if ($venta_global_cobrog < $porcentajeg3 ) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Total de ventas</div>
+                                            Total de cobros</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <?php	echo "$".$venta_global_cobrog ;?>
                                             </div>
@@ -461,7 +461,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{
@@ -501,7 +501,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{

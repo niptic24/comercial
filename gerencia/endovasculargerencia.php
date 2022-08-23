@@ -575,7 +575,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{
@@ -615,7 +615,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{

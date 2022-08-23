@@ -22,8 +22,19 @@ $user = $statement 	-> fetchAll(PDO::FETCH_ASSOC);
 foreach($user as $usuariob):
 	$_SESSION['nombre_usuario']=$usuariob['nombre'];
   $_SESSION['avatar']=$usuariob['avatar'];
+
 	endforeach;
 
+    //asesor
+$statement = $conn->prepare("SELECT * FROM usuarios  WHERE nombre = ? ");
+$statement->execute([$_SESSION['asesor']]);
+$usera = $statement 	-> fetchAll(PDO::FETCH_ASSOC);
+
+foreach($usera as $usuarioba):
+    $_SESSION['cli_ase']=$usuarioba['cant_clientes'];
+ 
+
+	endforeach;
    
 
 //obtener linea asistente 
@@ -41,6 +52,7 @@ foreach($linea as $lineaa):
   $_SESSION['endolin']=$lineaa['endovascular'];
   $_SESSION['hosplin']=$lineaa['hospitalaria'];
   $_SESSION['renallin']=$lineaa['renal'];
+  $_SESSION['Region']=$lineaa['Region'];
 	endforeach;
 
     $stmt1 = $conn->prepare('SELECT SUM(venta) as renaltotal FROM presupuesto where asesor = ?');
@@ -392,8 +404,13 @@ if ($total_ventas_linea < $porcentajeg3 ) {
             <li class="nav-item active">
                 <a class="nav-link" href="indexgerencia.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard </span></a>
             </li>
+            <li class="nav-item active">
+    <a class="nav-link" href="#">
+        <i class="fas fa-child"></i>
+        <span>Cant. Clientes: <?php echo $_SESSION['cli_ase'] ?></span></a>
+</li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -401,6 +418,7 @@ if ($total_ventas_linea < $porcentajeg3 ) {
             <!-- Heading -->
             <div class="sidebar-heading">
                 Lineas Asesor
+               
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -553,7 +571,7 @@ if ($total_ventas_linea < $porcentajeg3 ) {
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard <?php echo $_SESSION['Region'] ?></h1>
                       
                     </div>
 
@@ -587,7 +605,7 @@ if ($total_ventas_linea < $porcentajeg3 ) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total de presupuesto del mesEne - <?php echo date('M'), ' del ' , $año?></div>
+                                                Total de presupuesto del mes Ene - <?php echo date('M'), ' del ' , $año?></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php	echo "$".$total_presupuesto_linea ;  ?></div>
                                         </div>
@@ -842,7 +860,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{
@@ -882,7 +900,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{

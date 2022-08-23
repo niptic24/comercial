@@ -1,4 +1,8 @@
 <?php
+/*
+$contraseña = "Listo.123";
+$usuario = "u717963070_root";
+$nombre_base_de_datos = "u717963070_comercial";*/
 $contraseña = "";
 $usuario = "root";
 $nombre_base_de_datos = "comercial";

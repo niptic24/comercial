@@ -4,7 +4,7 @@
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="indexgerencia.php">
     <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+        <i class="fas fa-laugh-wink"> </i>
     </div>
     <div class="sidebar-brand-text mx-3"> <?php echo  $_SESSION['asesor']?> <sup></sup></div>
 </a>
@@ -17,6 +17,11 @@
     <a class="nav-link" href="indexgerencia.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="#">
+        <i class="fas fa-child"></i>
+        <span>Cant. Clientes: <?php echo $_SESSION['cli_ase'] ?></span></a>
 </li>
 
 <!-- Divider -->

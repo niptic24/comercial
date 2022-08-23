@@ -11,7 +11,20 @@ $user = $statement 	-> fetchAll(PDO::FETCH_ASSOC);
 foreach($user as $usuariob):
 	$_SESSION['nombre_usuario']=$usuariob['nombre'];
   $_SESSION['avatar']=$usuariob['avatar'];
+  $_SESSION['cant_clientes']=$usuariob['cant_clientes'];
 	endforeach;
+
+    //asesor
+    $statement = $conn->prepare("SELECT * FROM usuarios  WHERE nombre = ? ");
+    $statement->execute([$_SESSION['asesor']]);
+    $usera = $statement 	-> fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach($usera as $usuarioba):
+        $_SESSION['cli_ase']=$usuarioba['cant_clientes'];
+     
+    
+        endforeach;
+       
  
 //obtemer linea asistente 
 
@@ -99,7 +112,7 @@ $data1 = trim($data1,",");
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="indexgerencia.php">
     <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+        <i class="fas fa-laugh-wink"></h6></i>
     </div>
     <div class="sidebar-brand-text mx-3"> <?php echo  $_SESSION['asesor']?> <sup></sup></div>
 </a>
@@ -112,6 +125,11 @@ $data1 = trim($data1,",");
     <a class="nav-link" href="indexgerencia.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="#">
+        <i class="fas fa-child"></i>
+        <span>Cant. Clientes: <?php echo $_SESSION['cli_ase'] ?></span></a>
 </li>
 
 <!-- Divider -->

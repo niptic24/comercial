@@ -105,6 +105,17 @@ foreach($user as $usuariob):
 
    
 } 
+    //asesor
+    $statement = $conn->prepare("SELECT * FROM usuarios  WHERE nombre = ? ");
+    $statement->execute([$_SESSION['asesor']]);
+    $usera = $statement 	-> fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach($usera as $usuarioba):
+        $_SESSION['cli_ase']=$usuarioba['cant_clientes'];
+     
+    
+        endforeach;
+       
    
  
 
@@ -293,7 +304,7 @@ foreach($linea as $lineaa):
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total de cobros ENE - <?php echo date('M'), ' del ' , date("Y") ?></div>
+                                                Total de ventas ENE - <?php echo date('M'), ' del ' , date("Y") ?></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php if( isset($_POST['submit']) ){	echo "$".$venta_global_historicoc ;}
                                                 else  	echo "$0" ?>
@@ -314,7 +325,7 @@ foreach($linea as $lineaa):
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total de presupuesto cobros ENE -
+                                                Total de presupuesto ventas ENE -
                                                 <?php echo date('M'), ' del ' , date("Y") ?></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php if( isset($_POST['submit']) ){	echo "$".$presupuesto_venta_global_historicoc ;}
@@ -338,7 +349,7 @@ foreach($linea as $lineaa):
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Cobros
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Venta
                                                 del mes <?php echo date('M'), ' del ' , date("Y") ?> </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -366,7 +377,7 @@ foreach($linea as $lineaa):
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Cobros del mes <?php echo date('M'), ' del ' , date("Y") ?></div>
+                                                Venta del mes <?php echo date('M'), ' del ' , date("Y") ?></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php if( isset($_POST['submit']) ){	echo "$".$venta_presupuesto_mensual_historico_c ;}
                                                 else echo "$0"?>
@@ -571,7 +582,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{
@@ -611,7 +622,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{

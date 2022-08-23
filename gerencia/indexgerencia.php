@@ -15,6 +15,8 @@ foreach($user as $usuariob):
 	$_SESSION['nombre_usuario']=$usuariob['nombre'];
     $_SESSION['subnombre']=$usuariob['subnombre'];
   $_SESSION['avatar']=$usuariob['avatar'];
+  $_SESSION['cant_clientes']=$usuariob['cant_clientes'];
+  
 	endforeach;
 
     
@@ -370,7 +372,7 @@ $data1 = trim($data1,",");
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3"><?php echo 	$_SESSION['nombre_usuario'] ?> </div>
+                <div class="sidebar-brand-text mx-3"><?php echo 	$_SESSION['nombre_usuario']  ?> </div>
             </a>
 
             <!-- Divider -->
@@ -515,7 +517,7 @@ $data1 = trim($data1,",");
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Global de Lineas Ventas y Cobros  - Zona Costa y Manabí </h1>
+                        <h1 class="h3 mb-0 text-gray-800">Global de Lineas Ventas y Cobros  </h1>
                         </div>
 
                     <!-- Content Row -->
@@ -784,7 +786,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{
@@ -824,7 +826,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{

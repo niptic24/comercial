@@ -578,7 +578,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{
@@ -618,7 +618,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'pie',
   data: {
     labels: ["Venta", "Presupuesto"],
     datasets: [{
@@ -826,6 +826,7 @@ var myPieChart = new Chart(ctx, {
             
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
+                        
                         <span>Copyright &copy; NIPRO-TICs 2022</span>
                     </div>
                 </div>

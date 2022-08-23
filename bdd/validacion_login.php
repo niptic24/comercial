@@ -49,7 +49,7 @@ if($result){
 		
 	}
 }else{
-	header('Location: ../../comercial/login.php');
+	header('Location: ../../comercial/comercial/login.php');
  
 }
 
